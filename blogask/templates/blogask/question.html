@@ -1,0 +1,30 @@
+{% include "blogask/header.html" %}
+<h1>{question}<a href="">like</a><a href="">dislike</a></h1>
+<ul>
+    {% for answer in answers %}
+      <li>{{answer}}</li>
+      <ul>
+        {% for reply in replys %}
+        {% if reply.answer == answer %}
+        <li>{{reply}}</li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      {% if user.is_authenticated %}
+     <form action="{% url 'reply' answer.pk %}" method="post">
+       {% csrf_token %}
+       <input type="text" name="reply" id="">
+       <button type="submit">reply</button>
+     </form>
+     {% endif %}
+      {% empty %}
+      No answers
+      {% endfor %}
+</ul>
+{% if user.is_authenticated %}
+<form action="{% url 'answer' question.pk %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="answer" id="">
+  <button type="submit">answer</button>
+</form>
+{% endif %}

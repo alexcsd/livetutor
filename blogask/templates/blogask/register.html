@@ -1,3 +1,4 @@
+{% include "blogask/header.html" %}
 <form action="{% url 'register' %}" method="post">
     {% csrf_token %}
      {% for field in form %}

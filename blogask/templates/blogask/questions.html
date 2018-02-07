@@ -1,0 +1,6 @@
+{% include "blogask/header.html" %}
+{% for question in  questions %}
+    <li><a href="{% url 'question' question.pk %}">{{question}}</a></li>
+{% empty %}
+  No questions
+{% endfor %}

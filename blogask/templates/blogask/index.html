@@ -1,14 +1,4 @@
-<ul>
-    <li><a href="{% url 'index' %}">index</a></li>
-     {% if user.is_authenticated %} 
-
-     <li><a href="{% url 'logout' %}">logout</a></li>
-      {% else %} 
-      <li><a href="{% url 'login' %}">login</a></li>
-      <li><a href="{% url 'register' %}">register</a></li>
-
-      {% endif %}
-</ul>
+{% include "blogask/header.html" %}
 {% if user.is_authenticated %}
 Hello {{user.username}}
 {% else %}
